@@ -1,5 +1,4 @@
-﻿using BlazorSodokuApp.Client.Model;
-using BlazorSodokuApp.Shared;
+﻿using BlazorSodokuApp.Shared;
 using Microsoft.AspNetCore.Components;
 using Microsoft.JSInterop;
 

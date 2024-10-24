@@ -1,0 +1,47 @@
+﻿<Window x:Class="WpfSodokuApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfSodokuApp" 
+        mc:Ignorable="d"
+        xmlns:wpfsodokuapp="clr-namespace:WpfSodokuApp"
+        xmlns:viewmodel="clr-namespace:WpfSodokuApp.ViewModel" xmlns:view="clr-namespace:WpfSodokuApp.View"
+        d:DataContext="{d:DesignInstance Type=viewmodel:MainWindowViewModel}"
+        ResizeMode="NoResize"
+        Title="MainWindow" Height="600" Width="550">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="100" />
+            <Setter Property="Height" Value="40" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="FontStretch" Value="Expanded" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+    </Window.Resources>
+    
+    <StackPanel Margin="10">
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <view:ucBlock DataContext="{Binding Block0}"/>
+            <view:ucBlock DataContext="{Binding Block1}"/>
+            <view:ucBlock DataContext="{Binding Block2}"/>
+            <Separator Margin="5" Width="0"/>
+            <view:ucBlock DataContext="{Binding Block3}"/>
+            <view:ucBlock DataContext="{Binding Block4}"/>
+            <view:ucBlock DataContext="{Binding Block5}"/>
+            <Separator Margin="5" Width="0"/>
+            <view:ucBlock DataContext="{Binding Block6}"/>
+            <view:ucBlock DataContext="{Binding Block7}"/>
+            <view:ucBlock DataContext="{Binding Block8}"/>
+        </StackPanel>
+
+        <StackPanel Margin="10" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="New game" Command="{Binding GenerateNewGameCommand}" />
+            <Button Content="Check" Command="{Binding CheckSudokuCommand}" IsEnabled="{Binding CheckEnabled}" />
+            <Button Content="Solve" Command="{Binding SolveSudokuGameCommand}" />
+        </StackPanel>
+
+    </StackPanel>
+</Window>

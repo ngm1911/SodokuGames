@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="WpfSodokuApp.View.ucBlock"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfSodokuApp.View"
+            xmlns:viewmodel="clr-namespace:WpfSodokuApp.ViewModel"
+            d:DataContext="{d:DesignInstance Type=viewmodel:BlockViewModel}"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Width" Value="50" />
+            <Setter Property="Height" Value="50" />
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontStretch" Value="Expanded" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Style.Triggers>
+                <Trigger Property="IsReadOnly" Value="True">
+                    <Setter Property="Background" Value="LightGray" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    
+    <StackPanel Orientation="Horizontal">
+        <TextBox Text="{Binding Cell0.Value}" IsReadOnly="{Binding Cell0.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell1.Value}" IsReadOnly="{Binding Cell1.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell2.Value}" IsReadOnly="{Binding Cell2.IsReadOnly}"/>
+        <Separator Margin="5"/>
+        <TextBox Text="{Binding Cell3.Value}" IsReadOnly="{Binding Cell3.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell4.Value}" IsReadOnly="{Binding Cell4.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell5.Value}" IsReadOnly="{Binding Cell5.IsReadOnly}"/>
+        <Separator Margin="5"/>
+        <TextBox Text="{Binding Cell6.Value}" IsReadOnly="{Binding Cell6.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell7.Value}" IsReadOnly="{Binding Cell7.IsReadOnly}"/>
+        <TextBox Text="{Binding Cell8.Value}" IsReadOnly="{Binding Cell8.IsReadOnly}"/>
+    </StackPanel>
+</UserControl>

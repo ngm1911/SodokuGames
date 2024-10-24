@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35027.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSodokuApp.Server", "Server\BlazorSodokuApp.Server.csproj", "{1C7376DE-B587-4E60-836C-CDD363E9DD43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSodokuApp.Server", "Server\BlazorSodokuApp.Server.csproj", "{1C7376DE-B587-4E60-836C-CDD363E9DD43}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSodokuApp.Client", "Client\BlazorSodokuApp.Client.csproj", "{4C013BDB-C93B-4111-9419-610BA5A80283}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSodokuApp.Client", "Client\BlazorSodokuApp.Client.csproj", "{4C013BDB-C93B-4111-9419-610BA5A80283}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorSodokuApp.Shared", "Shared\BlazorSodokuApp.Shared.csproj", "{D3A40791-B6FB-47FF-9AB2-E291C9FB2AB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorSodokuApp.Shared", "Shared\BlazorSodokuApp.Shared.csproj", "{D3A40791-B6FB-47FF-9AB2-E291C9FB2AB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfSodokuApp", "WpfSodokuApp\WpfSodokuApp.csproj", "{51F5F007-DF48-4D1D-82EC-3756E08CA73F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{D3A40791-B6FB-47FF-9AB2-E291C9FB2AB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3A40791-B6FB-47FF-9AB2-E291C9FB2AB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3A40791-B6FB-47FF-9AB2-E291C9FB2AB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F5F007-DF48-4D1D-82EC-3756E08CA73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F5F007-DF48-4D1D-82EC-3756E08CA73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F5F007-DF48-4D1D-82EC-3756E08CA73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F5F007-DF48-4D1D-82EC-3756E08CA73F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

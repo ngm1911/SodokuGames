@@ -2,6 +2,7 @@ using BlazorSodokuApp.Server.Database.DbContext;
 using BlazorSodokuApp.Server.Database.Model;
 using BlazorSodokuApp.Shared;
 using Microsoft.EntityFrameworkCore;
+using SudokuGame = BlazorSodokuApp.Server.Database.Model.SudokuGame;
 
 var builder = WebApplication.CreateBuilder(args);
 

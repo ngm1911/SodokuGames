@@ -1,6 +1,6 @@
 ﻿using System.Text;
 
-namespace BlazorSodokuApp.Client.Model
+namespace BlazorSodokuApp.Shared
 {
     public class SudokuGame
     {

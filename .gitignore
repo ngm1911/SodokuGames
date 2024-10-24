@@ -5,3 +5,5 @@ Server/obj/
 Shared/obj/
 Shared/bin/
 .vs/
+WpfSodokuApp/obj/
+WpfSodokuApp/bin/
