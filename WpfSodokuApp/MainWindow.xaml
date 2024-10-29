@@ -41,6 +41,7 @@
             <Button Content="New game" Command="{Binding GenerateNewGameCommand}" />
             <Button Content="Check" Command="{Binding CheckSudokuCommand}" IsEnabled="{Binding CheckEnabled}" />
             <Button Content="Solve" Command="{Binding SolveSudokuGameCommand}" />
+            <Button Content="CreateEmptyBoard" Command="{Binding CreateEmptyBoardCommand}" />
         </StackPanel>
 
     </StackPanel>

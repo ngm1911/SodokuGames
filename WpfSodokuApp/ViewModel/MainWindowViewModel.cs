@@ -91,6 +91,13 @@ namespace WpfSodokuApp.ViewModel
         }
 
         [RelayCommand]
+        public void CreateEmptyBoard()
+        {
+            game = new();
+            FillBoard();
+        }
+
+        [RelayCommand]
         public void GenerateNewGame()
         {
             game = new();

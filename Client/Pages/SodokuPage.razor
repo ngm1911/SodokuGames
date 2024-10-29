@@ -16,8 +16,9 @@
                     var row = i;
                     var col = j;
                     <td>
-                        <input type="text" @oninput="(e => UpdateCell(row, col, e.Value.ToString()))" 
+                        <input type="text" @oninput="(e => UpdateCell(row, col, e.Value.ToString()))"
                                value="@(game.Board[row, col] == 0 ? string.Empty : game.Board[row, col])"
+                               onkeypress="return isNumberKey(event)"
                                class="sudoku-cell @(game.BoardInit[row, col] != 0 ? "filled" : "")"
                                maxlength="1" />
                     </td>
@@ -29,6 +30,7 @@
         <button @onclick="GenerateNewGame">New game</button>
         <button @onclick="CheckIsValid">Check</button>
         <button @onclick="SolveSudokuGame">Solve</button>
+        <button @onclick="CreateEmptyBoard">Empty</button>
     </div>
 </div>
 
@@ -37,17 +39,36 @@
 <div id="dataGrid"></div>
 
 <script>
+    function isNumberKey(evt) {
+        var charCode = evt.which ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+
     //Init grid
-    $(function () { 
+    $(function () {
         $("#dataGrid").dxDataGrid({
-                dataSource: []
-            });
+            dataSource: [],
+            hoverStateEnabled: true,
+            selection: {
+                mode: 'single',
+            },
+            onSelectionChanged(selectedItems) {
+                const data = selectedItems.selectedRowsData[0];
+                if (data) {
+                    DotnetHelpers.selectionChanged(data.id);
+                }
+            }
+        });
     });
 
     // Update data source
     window.updateDataGrid = function (data) {
         if ($("#dataGrid").dxDataGrid('instance')) {
-            $("#dataGrid").dxDataGrid('instance').option('dataSource', data);
+            $("#dataGrid").dxDataGrid('instance')
+                .option('dataSource', data);
         } else {
             $("#dataGrid").dxDataGrid({
                 dataSource: data,
@@ -61,4 +82,17 @@
             });
         }
     };
+
+    class DotnetHelpers {
+        static objectRef;
+
+        static setDotNetHelper(value) {
+            DotnetHelpers.objectRef = value;
+        }
+
+        static async selectionChanged(data) {
+            await DotnetHelpers.objectRef.invokeMethodAsync('SelectionChanged', data);
+        }
+    }
+    window.DotnetHelpers = DotnetHelpers;
 </script>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System;
+using System.Text;
 
 namespace BlazorSodokuApp.Shared
 {
@@ -200,6 +201,21 @@ namespace BlazorSodokuApp.Shared
                 }
             }
             return boardString.ToString();
+        }
+
+        public void LoadBoardFromString(string savedBoard)
+        {
+            var boards = savedBoard.ToCharArray();
+            int num = 0;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int j = 0; j < 9; j++)
+                {
+                    int.TryParse(boards[num].ToString(), out Board[i, j]);
+                    int.TryParse(boards[num].ToString(), out BoardInit[i, j]);
+                    num++;
+                }
+            }
         }
     }
 }

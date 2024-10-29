@@ -7,6 +7,7 @@ namespace BlazorSodokuApp.Client.Pages
     public partial class SodokuPage : OwningComponentBase
     {
         private SudokuGame game = new();
+        List<SudokuGameResponse> gamesSaved;
 
         private async Task CheckIsValid()
         {
@@ -39,11 +40,27 @@ namespace BlazorSodokuApp.Client.Pages
                 }
             }
         }
+        
+        private void CreateEmptyBoard()
+        {
+            game = new();
+        }
 
         private void GenerateNewGame()
         {
-            game = new();
+            CreateEmptyBoard();
             game.GenerateNewGame();
+        }
+
+        [JSInvokable("SelectionChanged")]
+        public async Task SelectionChanged(int selectedId)
+        {
+            var dataSaved = gamesSaved.FirstOrDefault(x => x.Id == selectedId);
+            if (dataSaved != null)
+            {
+                game.LoadBoardFromString(dataSaved.Board);
+                await InvokeAsync(StateHasChanged);
+            }
         }
 
         private void UpdateCell(int row, int col, string input)
@@ -81,8 +98,12 @@ namespace BlazorSodokuApp.Client.Pages
         {
             ISodokuApi.GetSodoku().ContinueWith(async t =>
             {
+                gamesSaved = t.Result;
                 await JSRuntime.InvokeVoidAsync("updateDataGrid", t.Result);
             });
+
+            var dotnetHelper = DotNetObjectReference.Create(this);
+            JSRuntime.InvokeVoidAsync("DotnetHelpers.setDotNetHelper", dotnetHelper);
         }
     }
 }
